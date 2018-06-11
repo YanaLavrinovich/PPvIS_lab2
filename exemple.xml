@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <list>
-    <student id="0">
+    <student>
         <surname>Ryshevich</surname>
         <name>Stephan</name>
         <fatherName>Oleghovich</fatherName>
@@ -18,7 +18,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="1">
+    <student>
         <surname>Lavrinovich</surname>
         <name>Yana</name>
         <fatherName>Gennadievna</fatherName>
@@ -46,7 +46,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="2">
+    <student>
         <surname>Yuzvenko</surname>
         <name>Polina</name>
         <fatherName>Andreevna</fatherName>
@@ -69,7 +69,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="3">
+    <student>
         <surname>Lavrinovich</surname>
         <name>Ksena</name>
         <fatherName>Gennadievna</fatherName>
@@ -97,7 +97,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="4">
+    <student>
         <surname>Konevega</surname>
         <name>Evgeniy</name>
         <fatherName>Vladimirovich</fatherName>
@@ -120,7 +120,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="5">
+    <student>
         <surname>Lavrinovich</surname>
         <name>Gennadiy</name>
         <fatherName>Vladimirovich</fatherName>
@@ -143,7 +143,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="6">
+    <student>
         <surname>Lavrinovich</surname>
         <name>Irina</name>
         <fatherName>Vladimirovna</fatherName>
@@ -166,7 +166,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="7">
+    <student>
         <surname>Pyshkin</surname>
         <name>Kapiton</name>
         <fatherName>Nickolaevich</fatherName>
@@ -189,7 +189,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="8">
+    <student>
         <surname>Nesterenko</surname>
         <name>Katerina</name>
         <fatherName>Vladlenovna</fatherName>
@@ -217,7 +217,7 @@
             </socialWork>
         </socialWorkBase>
     </student>
-    <student id="9">
+    <student>
         <surname>Shmat</surname>
         <name>Aleksey</name>
         <fatherName>Valerievich</fatherName>

@@ -1,10 +1,8 @@
 package View;
 
 import Controller.Controller;
-import Model.Student;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,8 +12,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import static javafx.geometry.Orientation.VERTICAL;
 

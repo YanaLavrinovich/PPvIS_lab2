@@ -32,7 +32,7 @@ public class XMLDomParser {
 
             for (int numOfStudent = 0; numOfStudent < studentBase.getStudentsBase().size(); numOfStudent++) {
                 Element student = document.createElement("student");
-                student.setAttribute("id", numOfStudent + "");
+
 
                 Element surname = document.createElement("surname");
                 surname.setTextContent(studentBase.getStudentsBase().get(numOfStudent).getSurname());

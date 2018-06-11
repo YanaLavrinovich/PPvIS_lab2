@@ -1,30 +1,34 @@
 package View;
 
 import Controller.Controller;
-import Model.SocialWork;
 import Model.Student;
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
 
-public class DeleteFrame extends SearchFrame {
+public class DeleteFrame {
+    private MainFrame mainFrame;
+    private Controller controller;
+    private TabPane tp;
+    private Button groupButton;
+    private Button typeButton;
+    private Button numberButton;
+    private Widget widget;
 
-    public DeleteFrame (MainFrame mainFrame, Controller controller){
-        super(mainFrame, controller);
+
+    public DeleteFrame(MainFrame mainFrame, Controller controller) {
+        this.mainFrame = mainFrame;
+        this.controller = controller;
     }
 
-    @Override
-    public void start () {
+    public void start() {
+        widget = new Widget();
         Group root = new Group();
-        setTabPane("Delete");
-        root.getChildren().addAll(getTabPane());
+        setTabPane();
+        root.getChildren().addAll(tp);
         setActionOnButtons();
         Scene scene = new Scene(root, 670, 200);
         Stage stage = new Stage();
@@ -33,39 +37,69 @@ public class DeleteFrame extends SearchFrame {
         stage.showAndWait();
     }
 
-    @Override
+    public void setTabPane() {
+        tp = new TabPane();
+        tp.setLayoutX(3);
+        tp.setLayoutY(7);
+
+        //search Surname and group
+        Tab tabGroup = new Tab("Delete Surname and Group");
+        tabGroup.setContent(widget.getRootGroup());
+        groupButton = new Button("Delete");
+        widget.getRootGroup().getChildren().addAll(groupButton);
+
+        //search surname and type
+        Tab tabType = new Tab("Delete Surname and Type of Social work");
+        tabType.setContent(widget.getRootType());
+
+        typeButton = new Button("Delete");
+        widget.getRootType().getChildren().addAll(typeButton);
+
+        //search surname and number
+        Tab tabNumber = new Tab("Delete Surname and Number of Social work");
+        tabNumber.setContent(widget.getRootNumber());
+
+        numberButton = new Button("Delete");
+        widget.getRootNumber().getChildren().addAll(numberButton);
+
+        tp.getTabs().addAll(tabGroup, tabType, tabNumber);
+    }
+
     public void setActionOnButtons() {
-        getButtons().get(0).setOnAction(e -> {
-            getSearchStudent().setSurname(getSurnameFieldGroup().getText());
-            getSearchStudent().setGroup(getGroupField().getText());
-            List<Student> resultOfSearch = getController().searchStudents(getSearchStudent(), "Group");
-            getController().getStudentBase().removeAll(resultOfSearch);
-            getMainFrame().update();
-            getSearchStudent().clean();
-            alertMessage(resultOfSearch, " deleted");
+        groupButton.setOnAction(e -> {
+            List<Student> resultOfSearch = controller.searchStudents(widget.getStudentGroup(), "Group");
+            controller.removeStudent(resultOfSearch);
+            mainFrame.update();
+            alertMessage(resultOfSearch);
         });
 
-        getButtons().get(1).setOnAction(e -> {
-            getSearchStudent().setSurname(getSurnameFieldType().getText());
-            getSearchStudent().addWorkInSemestr(new SocialWork(getTypeField().getText(), 0, 1));
-            List<Student> resultOfSearch = getController().searchStudents(getSearchStudent(), "Type");
-            getController().getStudentBase().removeAll(resultOfSearch);
-            getMainFrame().update();
-            getSearchStudent().clean();
-            alertMessage(resultOfSearch, " deleted");
+        typeButton.setOnAction(e -> {
+            List<Student> resultOfSearch = controller.searchStudents(widget.getStudentType(), "Type");
+            controller.removeStudent(resultOfSearch);
+            mainFrame.update();
+            alertMessage(resultOfSearch);
         });
 
-        getButtons().get(2).setOnAction(e -> {
-            getSearchStudent().setSurname(getSurnameFieldNumber().getText());
-            getSearchStudent().addWorkInSemestr(new SocialWork(getNumberTypeField().getText(), Integer.valueOf(getNumberMinField().getText()), 1));
-            getSearchStudent().addWorkInSemestr(new SocialWork(getNumberTypeField().getText(), Integer.valueOf(getNumberMaxField().getText()), 2));
-            List<Student> resultOfSearch = getController().searchStudents(getSearchStudent(), "Number");
-            getController().getStudentBase().removeAll(resultOfSearch);
-            getMainFrame().update();
-            getSearchStudent().clean();
-            alertMessage(resultOfSearch, " deleted");
+        numberButton.setOnAction(e -> {
+            List<Student> resultOfSearch = controller.searchStudents(widget.getStudentNumber(), "Number");
+            controller.getStudentBase().removeAll(resultOfSearch);
+            mainFrame.update();
+            alertMessage(resultOfSearch);
         });
     }
+
+    public void alertMessage(List<Student> list) {
+        if (list.size() != 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(list.size() + " deleted students");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("No such students");
+            alert.showAndWait();
+        }
+    }
+
 }
 
 

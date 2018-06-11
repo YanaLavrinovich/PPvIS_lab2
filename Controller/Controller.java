@@ -42,6 +42,9 @@ public class Controller {
         studentBase.setFile(file);
     }
 
+    public void removeStudent(List<Student> stud) {
+        getStudentBase().removeAll(stud);
+    }
     public File getFile(){
         return studentBase.getFile();
     }
